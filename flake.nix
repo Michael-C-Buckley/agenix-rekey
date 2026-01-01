@@ -24,7 +24,6 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
 
@@ -60,14 +59,9 @@
           # this to override which tools is used for encrypting / decrypting.
           # Defaults to rage (pkgs.rage). We only guarantee compatibility for
           # pkgs.age and pkgs.rage.
-          agePackage ? (p: p.rage),
+          agePackage ? (p: p.age),
           # The systems to generate apps for
-          systems ? [
-            "x86_64-linux"
-            "aarch64-linux"
-            "x86_64-darwin"
-            "aarch64-darwin"
-          ],
+          systems ? systems,
         }:
           lib.genAttrs systems (
             system: let
